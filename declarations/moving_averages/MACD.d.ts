@@ -6,6 +6,7 @@ export declare class MACDInput extends IndicatorInput {
     values: number[];
     SimpleMAOscillator: boolean;
     SimpleMASignal: boolean;
+    percentual?: boolean;
     fastPeriod: number;
     slowPeriod: number;
     signalPeriod: number;

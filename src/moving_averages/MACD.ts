@@ -8,6 +8,7 @@ import { EMA } from './EMA';
 export class MACDInput extends IndicatorInput {
     SimpleMAOscillator:boolean = true;
     SimpleMASignal:boolean = true;
+    percentual? = false
     fastPeriod:number;
     slowPeriod:number;
     signalPeriod:number;
@@ -49,8 +50,9 @@ export class MACD extends Indicator{
           }
           if(fast && slow) { //Just for typescript to be happy
             MACD = fast - slow;
+            if(input.percentual) MACD /= slow;
             signal = signalMAProducer.nextValue(MACD);
-          } 
+          }
           histogram = MACD - signal;
           tick = yield({
             //fast : fast,
